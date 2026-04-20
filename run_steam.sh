@@ -5,14 +5,14 @@ STEAMROOT="$SCRIPTDIR/steam"
 # setup steam data dir
 mkdir -p ~/.steam
 if [ ! -d ~/.steam/steam ]; then
-	ln -s "$STEAMROOT" ~/.steam/steam
+	ln -sfn "$STEAMROOT" ~/.steam/steam
 fi
 
 # ensure that the arm64 version of the steamrt based steam binary is used
 if [ ! -d "$STEAMROOT/steamrt64_backup" ]; then
 	mv "$STEAMROOT/steamrt64" "$STEAMROOT/steamrt64_backup"
 fi
-ln -s "$STEAMROOT/steamrtarm64" "$STEAMROOT/steamrt64"
+ln -sfn "$STEAMROOT/steamrtarm64" "$STEAMROOT/steamrt64"
 
 # satisfy conditions for running steamrt client
 echo "publicbeta" > "$STEAMROOT/package/beta"
